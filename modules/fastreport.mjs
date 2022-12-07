@@ -34,10 +34,10 @@ document.querySelector('#menu-conclusion').addEventListener('click', ()=>{
     toConclusion()
     showModal('#form-conclusion')
 })
-document.querySelector('#menu-numerar').addEventListener('click', ()=>{ativarImagem()})
+//document.querySelector('#menu-numerar').addEventListener('click', ()=>{ativarImagem()})
 document.querySelector('#menu-print').addEventListener('click', ()=>{
     let reportName = report.writeFullReportNumber()
-    document.title = reportName
+    document.title = `${reportName.replaceAll('.', '').replaceAll('/','_').replaceAll(' ', '').trim()}$`
     print()
 })
 //************************************************* Botões das Janelas */
