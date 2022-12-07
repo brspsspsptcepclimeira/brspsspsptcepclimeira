@@ -35,7 +35,11 @@ document.querySelector('#menu-conclusion').addEventListener('click', ()=>{
     showModal('#form-conclusion')
 })
 document.querySelector('#menu-numerar').addEventListener('click', ()=>{ativarImagem()})
-document.querySelector('#menu-print').addEventListener('click', ()=>{print()})
+document.querySelector('#menu-print').addEventListener('click', ()=>{
+    let reportName = report.writeFullReportNumber()
+    document.title = reportName
+    print()
+})
 //************************************************* Botões das Janelas */
 document.querySelectorAll('.btn-close').forEach(element=>{
     element.addEventListener('click', ()=>{
@@ -256,35 +260,6 @@ function toConclusion(){
 document.querySelector('#selectlocal').addEventListener('change', ()=>{
     document.querySelector('#ilocaltype').placeholder = document.querySelector('#selectlocal').value
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export function showImageEditor(formCaller, indexText, quillPanel){
     myImage.formCaller = formCaller
     myImage.indexText = indexText
@@ -371,46 +346,6 @@ function addImgToform(){
     myImage.formCaller = ''
     //myImage.quillPanel.dispatchEvent('y')
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //************************ Atualizar o relatório */
 function writeToHTML(){
     let statement = `<h1>${document.querySelector('#editor-number').value.trim()}</h1>`
