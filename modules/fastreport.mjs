@@ -379,9 +379,9 @@ function writeToHTML(){
     document.querySelector('#report').innerHTML = statement.replaceAll('<p><br></p>', '')
     numerarImage()
     listar()
-    ativarImagem()
     ativarH2()
     ativarP()
+    ativarImagem()
     //docToTxt()
 }    
 //********************** Exibe Janela de Edição */
@@ -508,7 +508,7 @@ document.querySelector('#h2_width').addEventListener('change', ()=>{
     hideModal()
 })
 function ativarP(){
-    let ps = document.querySelectorAll('#report>p')
+    let ps = document.querySelectorAll('#report>h3')
     let index = 0
         ps.forEach(element=>{
         element.setAttribute(`id`,`reportP${index}`)
@@ -516,8 +516,8 @@ function ativarP(){
         index++     
         element.addEventListener('dblclick', ()=>{
             previusImage = `#${element.getAttribute('id')}`
-            let valor = element.style.lineHeight
-            console.log(valor)
+            let valor = element.style.marginTop
+            //console.log(valor)
             document.querySelector('#p_width').value = valor.replace('rem', '').trim()
             showModal('#form-width-p')
         }) 
@@ -527,7 +527,7 @@ function ativarP(){
 document.querySelector('#p_width').addEventListener('change', ()=>{
     console.log(previusImage)
     let p = document.querySelector(previusImage)
-    p.style.lineHeight = `${document.querySelector('#p_width').value.trim()}rem`
+    p.style.marginTop = `${document.querySelector('#p_width').value.trim()}rem`
     hideModal()
 })
 /* function docToTxt(){
