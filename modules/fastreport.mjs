@@ -1,5 +1,6 @@
-import { todayDate, zeroToLeft } from "./functions.mjs"
-import { generateFakeReport, Report} from "./report.mjs"
+//import { writeFile, readFile } from "../node"
+import { todayDate, zeroToLeft} from "./functions.mjs"
+import { Report} from "./report.mjs"
 import { Img } from './img.mjs'
 import { quillObjective, quillQuestions, quillHistoric, quillInforms, quillLocal, quillVeicle, quillThing, quillCorpuses, quillConclusion} from "./quills.mjs"
 //const myReport = generateFakeReport()
@@ -34,7 +35,7 @@ document.querySelector('#menu-conclusion').addEventListener('click', ()=>{
     toConclusion()
     showModal('#form-conclusion')
 })
-//document.querySelector('#menu-numerar').addEventListener('click', ()=>{ativarImagem()})
+//document.querySelector('#menu-numerar').addEventListener('click', ()=>{ativarP()})
 document.querySelector('#menu-print').addEventListener('click', ()=>{
     let reportName = report.writeFullReportNumber()
     document.title = `${reportName.replaceAll('.', '').replaceAll('/','_').replaceAll(' ', '').trim()}$`
@@ -379,6 +380,9 @@ function writeToHTML(){
     numerarImage()
     listar()
     ativarImagem()
+    ativarH2()
+    ativarP()
+    //docToTxt()
 }    
 //********************** Exibe Janela de Edição */
 export function showModal(element_, withfocus=''){
@@ -483,3 +487,65 @@ document.querySelector('#image_width').addEventListener('change', ()=>{
     img.style.maxWidth = '14cm'
     img.style.width = `${document.querySelector('#image_width').value.trim()}cm`
 })
+function ativarH2(){
+    let h2s = document.querySelectorAll('#report>h2')
+    let index = 0
+        h2s.forEach(element=>{
+        element.setAttribute(`id`,`reporth2${index}`)
+        //console.log(`NULL -> ${element.getAttribute('id')}`)
+        index++     
+        element.addEventListener('dblclick', ()=>{
+            previusImage = `#${element.getAttribute('id')}`
+            showModal('#form-width-h2')
+        }) 
+        //console.log(`id = ${element.getAttribute('id')}`)
+    })    
+}
+document.querySelector('#h2_width').addEventListener('change', ()=>{
+    console.log(previusImage)
+    let h2 = document.querySelector(previusImage)
+    h2.style.marginTop = `${document.querySelector('#h2_width').value.trim()}rem`
+    hideModal()
+})
+function ativarP(){
+    let ps = document.querySelectorAll('#report>p')
+    let index = 0
+        ps.forEach(element=>{
+        element.setAttribute(`id`,`reportP${index}`)
+        //console.log(`NULL -> ${element.getAttribute('id')}`)
+        index++     
+        element.addEventListener('dblclick', ()=>{
+            previusImage = `#${element.getAttribute('id')}`
+            let valor = element.style.lineHeight
+            console.log(valor)
+            document.querySelector('#p_width').value = valor.replace('rem', '').trim()
+            showModal('#form-width-p')
+        }) 
+        //console.log(`id = ${element.getAttribute('id')}`)
+    })    
+}
+document.querySelector('#p_width').addEventListener('change', ()=>{
+    console.log(previusImage)
+    let p = document.querySelector(previusImage)
+    p.style.lineHeight = `${document.querySelector('#p_width').value.trim()}rem`
+    hideModal()
+})
+/* function docToTxt(){
+
+    report.txtfile = []
+    report.txtfile.push(document.querySelector('#editor-number').innerHTML)
+    report.txtfile.push(document.querySelector('#editor-preamble').innerHTML)
+    report.txtfile.push(document.querySelector('#editorObjective').innerHTML)
+    report.txtfile.push(document.querySelector('#editorQuestions').innerHTML)
+    report.txtfile.push(document.querySelector('#editorHistoric').innerHTML)
+    report.txtfile.push(document.querySelector('#editorInforms').innerHTML)
+    report.txtfile.push(document.querySelector('#editorLocal').innerHTML)
+    report.txtfile.push(document.querySelector('#editorVeicle').innerHTML)
+    report.txtfile.push(document.querySelector('#editorThing').innerHTML)
+    report.txtfile.push(document.querySelector('#editorCorpuses').innerHTML)
+    report.txtfile.push(document.querySelector('#editorConclusion').innerHTML)
+}
+ */
+function escreverArquivo() {  
+    alert('ok')
+    }

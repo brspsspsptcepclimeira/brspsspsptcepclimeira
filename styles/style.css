@@ -107,6 +107,7 @@ h2{
 }
 h1, h2{
     padding: 1rem;
+    margin-top: 0;
 }
 h3{
     margin-left: 4rem;
@@ -144,6 +145,7 @@ textarea{
 .article-preamble{
     padding-left: 16rem;
     font-size: 0.8rem;
+    line-height: 2rem
 }
 #signature-expert{
     margin-top: 2rem;

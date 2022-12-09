@@ -1,3 +1,8 @@
+//const fs = require('fs')
+//const fs = require('fs')
+//let data = "Learning how to write in a file."
+
+
 //Acrescenta um 0 à esquerda do dígito
 function zeroToLeft(num){
     let value=num.toString().trim()
@@ -49,5 +54,9 @@ function todayDate() {
     if (day.length < 2) day = '0' + day
     return [year, month, day].join('-')
 }
-
-export {zeroToLeft, formatMilhar, formatDate, pretyyCaptalize, todayDate}
+function createTxt() {
+    fs.readFile('../databasetxt/mumber.txt', (erro, valor)=>{
+        console.log(valor)
+    })
+  }
+export {zeroToLeft, formatMilhar, formatDate, pretyyCaptalize, todayDate, createTxt}

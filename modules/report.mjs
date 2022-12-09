@@ -44,6 +44,7 @@ export class Report{
         this.corpuse = ''
         this.conclusion = ''
         this.imgIndex = 0
+        this.txtfile = []
     }
     set number(newNumber){
         this._number = formatMilhar(newNumber)
