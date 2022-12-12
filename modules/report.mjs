@@ -227,6 +227,9 @@ export class Report{
     writeFullReportNumber(){
         return `Laudo ${this.number}/${this.year}`
     }
+    writeFullRDONumber(){
+        return `${this.rdo}/${this.year}`
+    }
     writePreamble(){
         const designatedDate = this.designatedDate
         const city = this.city 

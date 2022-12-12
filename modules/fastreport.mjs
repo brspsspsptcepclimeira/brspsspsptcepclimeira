@@ -39,6 +39,7 @@ document.querySelector('#menu-conclusion').addEventListener('click', ()=>{
 document.querySelector('#menu-print').addEventListener('click', ()=>{
     let reportName = report.writeFullReportNumber()
     document.title = `${reportName.replaceAll('.', '').replaceAll('/','_').replaceAll(' ', '').trim()}$`
+    //printFoot()
     print()
 })
 //************************************************* Botões das Janelas */
@@ -382,7 +383,7 @@ function writeToHTML(){
     ativarH2()
     ativarP()
     ativarImagem()
-    //docToTxt()
+    printFoot()
 }    
 //********************** Exibe Janela de Edição */
 export function showModal(element_, withfocus=''){
@@ -530,6 +531,15 @@ document.querySelector('#p_width').addEventListener('change', ()=>{
     p.style.marginTop = `${document.querySelector('#p_width').value.trim()}rem`
     hideModal()
 })
+function printFoot(){
+    let foot = document.querySelectorAll('#print-foot')
+    //let i=0
+    foot.forEach(element=>{
+        let rdo = `<p>${report.writeFullRDONumber()} | ${report.chamber}</p>`
+        element.innerHTML = rdo
+        element.style.paddingTop = '1cm'
+    })
+}
 /* function docToTxt(){
 
     report.txtfile = []
