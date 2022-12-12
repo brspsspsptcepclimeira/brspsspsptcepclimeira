@@ -73,7 +73,12 @@ document.querySelector('#send-questions').addEventListener('click', ()=>{
 })
 document.querySelector('#btn-form-historic').addEventListener('click', ()=>{
     writeToHTML()
-    showModal('#form-informs')
+    let selectedItem = document.querySelector('#selectlocal').selectedIndex
+    if(selectedItem == 1 || selectedItem == 2 || selectedItem == 3){
+        showModal('#form-veicle')
+    }else{
+        showModal('#form-informs')
+    } 
 })
 document.querySelector('#btn-form-informs').addEventListener('click', ()=>{
     report.informs = quillInforms.root.innerHTML
