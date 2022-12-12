@@ -559,7 +559,6 @@ input[type='text'], .modal input[type='date'], .modal input[type='checkbox'], .m
     #print-foot>p{
         text-align: center;
         font-size:0.6rem;
-        color:red;
         width: fit-content;
         float: right;
     }
